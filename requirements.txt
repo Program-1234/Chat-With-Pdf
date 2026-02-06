@@ -8,3 +8,5 @@ sentence-transformers
 transformers
 torch
 python-dotenv
+langchain-google-genai
+
