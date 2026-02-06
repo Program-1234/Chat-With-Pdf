@@ -17,10 +17,11 @@ from langchain_google_genai import(
 )
 
 load_dotenv()
-GOOGLE_API_KEY=os.getenv("GOOGLE_API_KEY")
+GOOGLE_API_KEY = os.getenv("GOOGLE_API_KEY") or st.secrets.get("GOOGLE_API_KEY")
 
 if not GOOGLE_API_KEY:
-    raise ValueError("GOOGLE_API_KEY not found in .env file")
+    st.error("GOOGLE_API_KEY is missing. Add it to Streamlit Secrets.")
+    st.stop()
 
 def read_pdfs(pdf_files):
     all_text=""
@@ -136,4 +137,5 @@ def main():
 
 
 if __name__ == "__main__":
+
     main()
